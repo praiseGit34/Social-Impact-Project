@@ -1,10 +1,11 @@
-import { Container } from 'reactstrap';
-import Home from './Components/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Registration from './Components/Registration/Register';
-import Login from './Components/Login/Login';
-import Logout from './Components/Logout/Logout';
+import { Container } from 'reactstrap';
 import { ToastContainer } from 'react-toastify';
+
+import Home from './Components/Home';
+import Login from './Components/Login/Login';
+import Registration from './Components/Registration/Register';
+import Logout from './Components/Logout/Logout';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/register" element={<Registration />} />
+          <Route path="/registration" element={<Registration />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>
