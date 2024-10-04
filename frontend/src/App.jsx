@@ -1,9 +1,10 @@
 import { Container } from 'reactstrap';
 import Home from './Components/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Registration from './Components/Registration';
-import Login from './Components/Login';
-import Logout from './Components/Logout';
+import Registration from './Components/Registration/Register';
+import Login from './Components/Login/Login';
+import Logout from './Components/Logout/Logout';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/registration" element={<Registration />} />
+          <Route path="/register" element={<Registration />} />
         </Routes>
+        <ToastContainer />
       </BrowserRouter>
     </Container>
   );
