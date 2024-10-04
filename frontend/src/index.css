@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #230039;
+  color: #ddd;
+}
+
+/* Nav */
+.custom-nav .collapse {
+  justify-content: flex-end;
+}
+/* End of Nav */
