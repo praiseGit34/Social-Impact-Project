@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomNav from '../CustomNav';
 import { userData } from '../../../helpers';
 
