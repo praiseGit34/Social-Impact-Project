@@ -1,16 +1,15 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FormGroup, Input, Label, Button, Row, Col } from 'reactstrap';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Select from 'react-dropdown-select';
+// import Select from 'react-dropdown-select';
 
 const initialUser = {
   username: '',
   email: '',
   password: '',
-  role: '',
 };
 
 const Registration = () => {
@@ -23,6 +22,7 @@ const Registration = () => {
       if (user.username && user.email && user.password && user.role);
       {
         const res = await axios.post(url, user);
+
         if (res) {
           setUser(initialUser);
           navigate('/login');
@@ -90,12 +90,11 @@ const Registration = () => {
           <FormGroup>
             <label>
               <span className="required-field">Role:</span>
-              <select name="role" value={user.role} onChange={handleUserChange}>
-                <option>Select Role</option>
-                <option name="student" value={user.student}>
+              <select name="role" onChange={handleUserChange}>
+                <option name="student" value="student">
                   Student
                 </option>
-                <option name="teacher" value={user.teacher}>
+                <option name="teacher" value="teacher">
                   Teacher
                 </option>
               </select>
