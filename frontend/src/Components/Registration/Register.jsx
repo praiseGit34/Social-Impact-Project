@@ -10,6 +10,7 @@ const initialUser = {
   username: '',
   email: '',
   password: '',
+  role: '',
 };
 
 const Registration = () => {
@@ -19,12 +20,11 @@ const Registration = () => {
   const signUp = async () => {
     const url = 'http://localhost:1337/api/auth/local/register';
     try {
-      if (user.username && user.email && user.password);
+      if (user.username && user.email && user.password && user.role);
       {
         const res = await axios.post(url, user);
         if (res) {
           setUser(initialUser);
-
           navigate('/login');
         }
       }
@@ -84,11 +84,13 @@ const Registration = () => {
               placeholder="Enter Password"
             />
           </FormGroup>
+
+          {/* // Here is where I need help  */}
+
           <FormGroup>
             <label>
               <span className="required-field">Role:</span>
-
-              <select>
+              <select name="role" value={user.role} onChange={handleUserChange}>
                 <option>Select Role</option>
                 <option name="student" value={user.student}>
                   Student
@@ -99,6 +101,9 @@ const Registration = () => {
               </select>
             </label>
           </FormGroup>
+
+          {/* Help ends here */}
+
           <Button color="primary" onClick={signUp}>
             Sign Up
           </Button>
