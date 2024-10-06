@@ -4,19 +4,27 @@ import { FormGroup, Input, Label, Button, Row, Col } from 'reactstrap';
 import { Link, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Select from 'react-dropdown-select';
 
-const initialUser = { username: '', email: '', password: '' };
+const initialUser = {
+  username: '',
+  email: '',
+  password: '',
+};
 
 const Registration = () => {
   const [user, setUser] = useState(initialUser);
+
   const navigate = useNavigate();
   const signUp = async () => {
     const url = 'http://localhost:1337/api/auth/local/register';
     try {
-      if (user.username && user.email && user.password) {
+      if (user.username && user.email && user.password);
+      {
         const res = await axios.post(url, user);
         if (res) {
           setUser(initialUser);
+
           navigate('/login');
         }
       }
@@ -35,16 +43,19 @@ const Registration = () => {
       [name]: value,
     }));
   };
+
   return (
     <Row className="register">
       <Col sm="12" md={{ size: 4, offset: 4 }}>
         <div className="signup-form">
           <h2>Sign Up</h2>
           <FormGroup>
-            <Label for="username">User Name</Label>
+            <Label for="username" className="required-field">
+              User Name
+            </Label>
             <Input
-              type="type"
-              id="password"
+              type="text"
+              id="username"
               name="username"
               value={user.username}
               onChange={handleUserChange}
@@ -52,7 +63,7 @@ const Registration = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Label>Email</Label>
+            <Label className="required-field">Email</Label>
             <Input
               type="email"
               id="email"
@@ -63,7 +74,7 @@ const Registration = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Label>Password</Label>
+            <Label className="required-field">Password</Label>
             <Input
               type="password"
               id="password"
@@ -72,6 +83,22 @@ const Registration = () => {
               onChange={handleUserChange}
               placeholder="Enter Password"
             />
+          </FormGroup>
+          <FormGroup>
+            <label>
+              <span className="required-field">Role:</span>
+
+              <select>
+                <option value="chooseOption">Select Role</option>
+                <option name="student" value={user.student}>
+                  Student
+                </option>
+                <option name="teacher" value={user.teacher}>
+                  Teacher
+                </option>
+              </select>
+            </label>
+            {/* <p>Selected option: {selectedOption}</p> */}
           </FormGroup>
           <Button color="primary" onClick={signUp}>
             Sign Up

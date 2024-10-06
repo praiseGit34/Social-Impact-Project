@@ -49,4 +49,18 @@ body {
 .register h6 {
   margin-top: 16px;
 }
+.required-field::after {
+  content: ' *';
+  color: red;
+}
+
+select {
+  display: block;
+  color: #36454f;
+  width: 200px;
+  margin-top: 5px;
+  border-color: #e5e4e2;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
 /* End of sign up */

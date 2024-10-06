@@ -6,6 +6,8 @@ import Home from './Components/Home';
 import Login from './Components/Login/Login';
 import Registration from './Components/Registration/Register';
 import Logout from './Components/Logout/Logout';
+import TeacherDashboard from './Components/Pages/TeacherDashboard';
+import StudentDashboard from './Components/Pages/StudentDashboard';
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/registration" element={<Registration />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+          <Route path="/student-dashboard" element={<StudentDashboard />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>
