@@ -98,7 +98,6 @@ const Registration = () => {
                 </option>
               </select>
             </label>
-            {/* <p>Selected option: {selectedOption}</p> */}
           </FormGroup>
           <Button color="primary" onClick={signUp}>
             Sign Up
