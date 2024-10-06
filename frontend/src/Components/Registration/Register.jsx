@@ -89,7 +89,7 @@ const Registration = () => {
               <span className="required-field">Role:</span>
 
               <select>
-                <option value="chooseOption">Select Role</option>
+                <option>Select Role</option>
                 <option name="student" value={user.student}>
                   Student
                 </option>
