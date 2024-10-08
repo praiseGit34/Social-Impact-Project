@@ -1,6 +1,3 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 export const storeUser = data => {
   localStorage.setItem(
     'user',

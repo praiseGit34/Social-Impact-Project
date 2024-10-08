@@ -29,6 +29,7 @@ const Registration = () => {
         }
       }
     } catch (error) {
+      console.log(error);
       toast.error(error.message, {
         hideProgressBar: true,
       });
@@ -41,6 +42,12 @@ const Registration = () => {
     setUser(currentUser => ({
       ...currentUser,
       [name]: value,
+    }));
+  };
+  const handleRoleChange = event => {
+    setUser(currentUser => ({
+      ...currentUser,
+      role: event.target.value,
     }));
   };
 
@@ -90,13 +97,10 @@ const Registration = () => {
           <FormGroup>
             <label>
               <span className="required-field">Role:</span>
-              <select name="role" onChange={handleUserChange}>
-                <option name="student" value="student">
-                  Student
-                </option>
-                <option name="teacher" value="teacher">
-                  Teacher
-                </option>
+              <select value={user.role} onChange={handleRoleChange}>
+                <option value="">Choose Role</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
               </select>
             </label>
           </FormGroup>
