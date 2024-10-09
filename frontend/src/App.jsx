@@ -1,9 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Container } from 'reactstrap';
-import { ToastContainer } from 'react-toastify';
-
-import Home from './Components/Home';
 import Login from './Components/Login/Login';
+import Home from './Components/Home/index';
 import Registration from './Components/Registration/Register';
 import Logout from './Components/Logout/Logout';
 import TeacherDashboard from './Components/Pages/TeacherDashboard';
@@ -21,7 +19,6 @@ function App() {
           <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
           <Route path="/student-dashboard" element={<StudentDashboard />} />
         </Routes>
-        <ToastContainer />
       </BrowserRouter>
     </Container>
   );

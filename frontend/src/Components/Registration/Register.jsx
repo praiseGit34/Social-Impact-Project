@@ -1,35 +1,26 @@
 import axios from 'axios';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FormGroup, Input, Label, Button, Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-// import Select from 'react-dropdown-select';
 
-const initialUser = {
-  username: '',
-  email: '',
-  password: '',
-};
+const initialUser = { username: '', email: '', password: '' };
 
 const Registration = () => {
   const [user, setUser] = useState(initialUser);
-
   const navigate = useNavigate();
   const signUp = async () => {
     const url = 'http://localhost:1337/api/auth/local/register';
     try {
-      if (user.username && user.email && user.password && user.role);
-      {
+      if (user.username && user.email && user.password) {
         const res = await axios.post(url, user);
-
         if (res) {
           setUser(initialUser);
           navigate('/login');
         }
       }
     } catch (error) {
-      console.log(error);
       toast.error(error.message, {
         hideProgressBar: true,
       });
@@ -44,25 +35,16 @@ const Registration = () => {
       [name]: value,
     }));
   };
-  const handleRoleChange = event => {
-    setUser(currentUser => ({
-      ...currentUser,
-      role: event.target.value,
-    }));
-  };
-
   return (
     <Row className="register">
       <Col sm="12" md={{ size: 4, offset: 4 }}>
         <div className="signup-form">
           <h2>Sign Up</h2>
           <FormGroup>
-            <Label for="username" className="required-field">
-              User Name
-            </Label>
+            <Label for="username">User Name</Label>
             <Input
-              type="text"
-              id="username"
+              type="type"
+              id="password"
               name="username"
               value={user.username}
               onChange={handleUserChange}
@@ -70,7 +52,7 @@ const Registration = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="required-field">Email</Label>
+            <Label>Email</Label>
             <Input
               type="email"
               id="email"
@@ -81,7 +63,7 @@ const Registration = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="required-field">Password</Label>
+            <Label>Password</Label>
             <Input
               type="password"
               id="password"
@@ -91,22 +73,6 @@ const Registration = () => {
               placeholder="Enter Password"
             />
           </FormGroup>
-
-          {/* // Here is where I need help  */}
-
-          <FormGroup>
-            <label>
-              <span className="required-field">Role:</span>
-              <select value={user.role} onChange={handleRoleChange}>
-                <option value="">Choose Role</option>
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-              </select>
-            </label>
-          </FormGroup>
-
-          {/* Help ends here */}
-
           <Button color="primary" onClick={signUp}>
             Sign Up
           </Button>
