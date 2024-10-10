@@ -18,6 +18,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
           <Route path="/student-dashboard" element={<StudentDashboard />} />
+          <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
       </BrowserRouter>
     </Container>

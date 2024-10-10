@@ -65,8 +65,9 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "roles": {
-      "type": "string"
+    "position": {
+      "type": "string",
+      "required": true
     }
   }
 }
