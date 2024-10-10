@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { FormGroup, Input, Label, Button, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -34,7 +34,7 @@ const Login = () => {
           });
 
           setUser(initialUser);
-          navigate('student-dashboard');
+          navigate('/student-dashboard');
         }
       }
     } catch (error) {

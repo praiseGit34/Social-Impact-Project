@@ -51,6 +51,7 @@ const Registration = () => {
               value={user.username}
               onChange={handleUserChange}
               placeholder="Enter your full name"
+              required
             />
           </FormGroup>
 
@@ -63,6 +64,7 @@ const Registration = () => {
               value={user.email}
               onChange={handleUserChange}
               placeholder="Enter Email"
+              required
             />
           </FormGroup>
 
@@ -75,6 +77,7 @@ const Registration = () => {
               value={user.password}
               onChange={handleUserChange}
               placeholder="Enter Password"
+              required
             />
           </FormGroup>
 

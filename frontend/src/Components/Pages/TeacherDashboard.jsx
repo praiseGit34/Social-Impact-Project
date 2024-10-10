@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const TeacherDashboard = () => {
   return (
-    <div>TeacherDashboard</div>
-  )
-}
+    <div>
+      <h2>TeacherDashboard</h2>
+    </div>
+  );
+};
 
-export default TeacherDashboard
+export default TeacherDashboard;
