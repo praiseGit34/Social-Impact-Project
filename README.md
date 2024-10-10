@@ -1,2 +1,2 @@
 # React Edulink Project
-The Student-Teacher Admin Dashboard is a robust web application built with React, Redux, and Material-UI (MUI). It serves as a comprehensive solution for managing classes from 1 to 10 in a school, providing distinct levels of access for administrators, teachers, and students.
+The Teacher-Student Edulink project  is a web application built with React and strapi CMS for the backend. It serves as a comprehensive solution online studies for Primary School going pupils during holidays, providing distinct levels of access for teachers, and puplis.
