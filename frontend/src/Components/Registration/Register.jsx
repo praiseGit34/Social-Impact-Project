@@ -15,9 +15,11 @@ const Registration = () => {
     try {
       if (user.username && user.email && user.password && user.position) {
         const res = await axios.post(url, user);
-        if (res) {
+        if (res && user.position === 'student') {
           setUser(initialUser);
-          navigate('/login');
+          navigate('/student-dashboard');
+        } else {
+          navigate('/teacher-dashboard');
         }
       }
     } catch (error) {

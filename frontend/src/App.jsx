@@ -26,8 +26,8 @@ function App() {
           <Route path="/teacher-dashboard/courses" element={<Courses />} />
           <Route path="/teacher-dashboard/Assignments" element={<Assignments />} />
           <Route path="/teacher-dashboard/profile" element={<Profile />} />
+          <Route path="*" element={<div>Page Not Found</div>} />
 
-          
         </Routes>
       </BrowserRouter>
     </Container>
