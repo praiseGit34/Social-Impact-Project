@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink, Routes, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import Assignments from './Assignments';
@@ -25,6 +24,9 @@ const TeacherDashboard = () => {
             </li>
             <li>
               <NavLink to="/teacher-dashboard/assignments">Assignments</NavLink>
+            </li>
+            <li>
+              <NavLink to="/Logout">Logout</NavLink>
             </li>
           </ul>
         </Col>

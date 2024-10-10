@@ -74,7 +74,7 @@ const Login = () => {
           Login
         </Button>
         <h6>
-          Click <Link to="/register">Here</Link> to Sign Up
+          Click <Link to="/register" className='signup-login'>Here</Link> to Sign Up
         </h6>
       </Col>
     </Row>

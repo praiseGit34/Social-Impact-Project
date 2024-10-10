@@ -98,8 +98,11 @@ const Registration = () => {
             Sign Up
           </Button>
           <h6>
-            Already have an account? Click <Link to="/login">Here</Link> to
-            login
+            Already have an account? Click{' '}
+            <Link to="/login" className="signup-login">
+              Here
+            </Link>{' '}
+            to login
           </h6>
         </div>
       </Col>

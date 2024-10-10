@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background: #0A192F;
+  background: #0a192f;
   color: #ddd;
 }
 
@@ -61,4 +61,8 @@ select {
   border: 1px solid rgb(228, 223, 223);
   border-radius: 5px;
   padding: 2px 3px;
+}
+.signup-login {
+  color: black;
+  display: inline;
 }
