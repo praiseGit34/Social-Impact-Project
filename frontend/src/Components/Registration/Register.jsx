@@ -1,11 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FormGroup, Input, Label, Button, Row, Col } from 'reactstrap';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const initialUser = { username: '', email: '', password: '' };
+const initialUser = { username: '', email: '', password: '', position: '' };
 
 const Registration = () => {
   const [user, setUser] = useState(initialUser);
@@ -13,7 +13,7 @@ const Registration = () => {
   const signUp = async () => {
     const url = 'http://localhost:1337/api/auth/local/register';
     try {
-      if (user.username && user.email && user.password) {
+      if (user.username && user.email && user.password && user.position) {
         const res = await axios.post(url, user);
         if (res) {
           setUser(initialUser);
@@ -51,6 +51,7 @@ const Registration = () => {
               placeholder="Enter your full name"
             />
           </FormGroup>
+
           <FormGroup>
             <Label>Email</Label>
             <Input
@@ -62,6 +63,7 @@ const Registration = () => {
               placeholder="Enter Email"
             />
           </FormGroup>
+
           <FormGroup>
             <Label>Password</Label>
             <Input
@@ -73,6 +75,20 @@ const Registration = () => {
               placeholder="Enter Password"
             />
           </FormGroup>
+
+          {/* here */}
+
+          <FormGroup>
+            <Label>Role</Label>
+            <select name="position" onChange={handleUserChange}>
+              <option value="">Choose Role</option>
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </select>
+          </FormGroup>
+
+          {/* here ends */}
+
           <Button color="primary" onClick={signUp}>
             Sign Up
           </Button>

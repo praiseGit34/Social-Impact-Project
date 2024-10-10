@@ -34,7 +34,7 @@ const Login = () => {
           });
 
           setUser(initialUser);
-          navigate('/');
+          navigate('student-dashboard');
         }
       }
     } catch (error) {
