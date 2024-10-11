@@ -22,7 +22,7 @@ To set up the React Admin Teacher Dashboard, follow these steps:
 5. Open your browser and access the dashboards
 Note: Ensure that you have Node.js and npm installed on your machine before proceeding with the installation.
 
-## usage
+## Usage
 1. Signup and explore the various features and functionalities available in the dashboard based on user either teacher or student
 2. Perform tasks such as adding assigments, editing etc, and attendance as needed.
 
