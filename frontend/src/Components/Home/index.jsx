@@ -8,8 +8,8 @@ const Home = () => {
   return (
     <div>
       <CustomNav />
-      <div className="text-center pt-4 home">
-        <h2>Home</h2>
+
+      <div className=" text-center pt-4 home">
         <div>
           <div className="mainDiv">
             <img
