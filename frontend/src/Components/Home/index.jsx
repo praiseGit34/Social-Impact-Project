@@ -30,7 +30,6 @@ const Home = () => {
                 <br /> at your convinience
               </p>
             </div>
-            <Link to={'/register'}>Register</Link>
           </div>
         </div>
       </div>
@@ -50,10 +49,16 @@ const Home = () => {
         <div>
           <h3>We are Social</h3>
           <span>Follow Us</span>
-          <div>
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className="text-center">
+            <span>
+              <box-icon type="logo" name="facebook-circle"></box-icon>
+            </span>
+            <span>
+              <box-icon name="twitter" type="logo"></box-icon>
+            </span>
+            <span>
+              <box-icon name="linkedin" type="logo"></box-icon>
+            </span>
           </div>
         </div>
       </footer>
