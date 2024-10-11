@@ -37,19 +37,19 @@ const Home = () => {
       <footer>
         <div>
           <h3>Services</h3>
-          <span>check us</span>
+          <span>Check Us</span>
           <p>Online Teaching</p>
-          <p>Reading Material</p>
+          <p>Reading Materials</p>
         </div>
         <div>
           <h3>Address</h3>
-          <span>contact us</span>
+          <span>Contact Us</span>
           <p>Kampala</p>
           <p>+256787****</p>
         </div>
         <div>
-          <h3>Social media</h3>
-          <span>Follow us</span>
+          <h3>We are Social</h3>
+          <span>Follow Us</span>
           <div>
             <span></span>
             <span></span>
