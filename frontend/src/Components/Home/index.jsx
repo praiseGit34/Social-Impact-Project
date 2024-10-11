@@ -6,24 +6,31 @@ import './index.css';
 const Home = () => {
   const { username } = userData();
   return (
-    <div >
+    <div>
       <CustomNav />
-      <div className='text-center pt-4 home'>
+      <div className="text-center pt-4 home">
         <h2>Home</h2>
         <div>
-          <div className='mainDiv'>
-            <img src='https://img.freepik.com/free-photo/schoolchildren-reading-library_1098-4048.jpg' alt='image info' />
+          <div className="mainDiv">
+            <img
+              src="https://img.freepik.com/free-photo/schoolchildren-reading-library_1098-4048.jpg"
+              alt="image info"
+            />
             <h3>Get the best education services now</h3>
           </div>
-          <Link to={"/teacher-dashboard/courses"}>See All Our Courses</Link>
+          <Link to={'/teacher-dashboard/courses'}>See All Our Courses</Link>
         </div>
-        <div className='whoWeAre'>
-          <div className='main'>
+        <div className="whoWeAre">
+          <div className="main">
             <h3>Who we are</h3>
             <div>
-              <p>we offer a<br /> community <br /> based reliable and <br /> efficient learning<br /> at your convinience</p>
+              <p>
+                We offer a<br /> community <br /> based reliable and <br />{' '}
+                efficient learning
+                <br /> at your convinience
+              </p>
             </div>
-            <Link to={"/register"}>Register</Link>
+            <Link to={'/register'}>Register</Link>
           </div>
         </div>
       </div>
