@@ -19,31 +19,31 @@ export const DASHBOARD_SIDEBAR_LINKS = [
   {
     key: 'assignments',
     label: 'Assignments',
-    path: '/student-assignments',
+    path: '/layout/student-assignments',
     icon: <HiOutlineCube />,
   },
   {
     key: 'timetable',
     label: 'Time Table',
-    path: '/TimeTable',
+    path: '/layout/time-table',
     icon: <HiOutlineShoppingCart />,
   },
   {
     key: 'calendar',
     label: 'Calendar',
-    path: '/Calendar',
+    path: '/layout/calendar',
     icon: <HiOutlineUsers />,
   },
   {
     key: 'examinations',
     label: 'Examinations',
-    path: '/Examinations',
+    path: '/layout/exams',
     icon: <HiOutlineDocumentText />,
   },
   {
     key: 'results',
     label: 'Results',
-    path: '/Results',
+    path: '/layout/results',
     icon: <HiOutlineAnnotation />,
   },
 ];

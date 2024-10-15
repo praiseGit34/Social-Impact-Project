@@ -11,6 +11,10 @@ import Assignments from './Components/Pages/Assignments';
 import Profile from './Components/Pages/Profile';
 import Layout from './Components/Pages/shared/Layout';
 import StudentAssignments from './StudentAssignments';
+import TimeTable from './Components/TimeTable';
+import Calendar from './Components/Calendar';
+import Examinations from './Components/Examinations';
+import Results from './Components/Results';
 
 function App() {
   return (
@@ -39,6 +43,10 @@ function App() {
               path="student-assignments"
               element={<StudentAssignments />}
             />
+            <Route path="time-table" element={<TimeTable />} />
+            <Route path="calendar" element={<Calendar />} />
+            <Route path="exams" element={<Examinations />} />
+            <Route path="results" element={<Results />} />
           </Route>
         </Routes>
       </BrowserRouter>
