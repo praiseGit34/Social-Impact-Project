@@ -1,10 +1,10 @@
 import {
   HiOutlineViewGrid,
-  HiOutlineCube,
-  HiOutlineShoppingCart,
-  HiOutlineUsers,
-  HiOutlineDocumentText,
-  HiOutlineAnnotation,
+  HiOutlineClipboardList,
+  HiClock,
+  HiOutlineCalendar,
+  HiOutlineAcademicCap,
+  HiFilter,
   HiOutlineQuestionMarkCircle,
   HiOutlineCog,
 } from 'react-icons/hi';
@@ -20,31 +20,31 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     key: 'assignments',
     label: 'Assignments',
     path: '/layout/student-assignments',
-    icon: <HiOutlineCube />,
+    icon: <HiOutlineClipboardList />,
   },
   {
     key: 'timetable',
     label: 'Time Table',
     path: '/layout/time-table',
-    icon: <HiOutlineShoppingCart />,
+    icon: <HiClock />,
   },
   {
     key: 'calendar',
     label: 'Calendar',
     path: '/layout/calendar',
-    icon: <HiOutlineUsers />,
+    icon: <HiOutlineCalendar />,
   },
   {
     key: 'examinations',
     label: 'Examinations',
     path: '/layout/exams',
-    icon: <HiOutlineDocumentText />,
+    icon: <HiOutlineAcademicCap />,
   },
   {
     key: 'results',
     label: 'Results',
     path: '/layout/results',
-    icon: <HiOutlineAnnotation />,
+    icon: <HiFilter />,
   },
 ];
 

@@ -9,8 +9,10 @@ const Layout = () => {
         <div>
           <SideBar />
         </div>
-        <div className="p-3">
-          <div className="relative">header</div>
+        <div className="bg-neutral-200 h-screen w-screen absolute top-0 left-60">
+          <div>
+            <h1>header</h1>
+          </div>
           <div>{<Outlet />}</div>
         </div>
       </div>
