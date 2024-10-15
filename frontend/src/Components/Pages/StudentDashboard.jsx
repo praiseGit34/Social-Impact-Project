@@ -3,7 +3,7 @@ import React from 'react';
 const StudentDashboard = () => {
   return (
     <div>
-      <h2>StudentDashboard</h2>
+      <p>This is a dashboard to</p>
     </div>
   );
 };

@@ -16,7 +16,9 @@ const Home = () => {
               src="https://img.freepik.com/free-photo/schoolchildren-reading-library_1098-4048.jpg"
               alt="image info"
             />
-            <h3>Get the best education services now</h3>
+            <h3 className="text-red-700">
+              Get the best education services now
+            </h3>
           </div>
           <Link to={'/teacher-dashboard/courses'}>See All Our Courses</Link>
         </div>
