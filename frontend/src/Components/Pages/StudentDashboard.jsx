@@ -2,9 +2,9 @@ import React from 'react';
 
 const StudentDashboard = () => {
   return (
-    <div>
-      <h2>StudentDashboard</h2>
-    </div>
+    <h1 className="text-3xl font-bold underline text-white text-left">
+      Student Dashboard
+    </h1>
   );
 };
 
