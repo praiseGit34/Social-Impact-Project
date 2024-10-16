@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Calendar = () => {
-  return <div>Calendar</div>;
+  return (
+    <div>
+      <h2>Calendar</h2>
+    </div>
+  );
 };
 
 export default Calendar;
