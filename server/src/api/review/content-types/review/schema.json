@@ -4,11 +4,8 @@
   "info": {
     "singularName": "review",
     "pluralName": "reviews",
-<<<<<<< HEAD
+
     "displayName": "Review"
-=======
-    "displayName": "review"
->>>>>>> 54c67ded2c273ed87e4e3a924ca23553617d2c0f
   },
   "options": {
     "draftAndPublish": true
@@ -22,16 +19,11 @@
     },
     "rating": {
       "type": "integer",
-<<<<<<< HEAD
+
       "required": true,
       "max": 10,
       "min": 1,
       "unique": true
-=======
-      "max": 10,
-      "unique": true,
-      "min": 1
->>>>>>> 54c67ded2c273ed87e4e3a924ca23553617d2c0f
     },
     "body": {
       "type": "blocks",
