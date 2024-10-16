@@ -645,12 +645,19 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     singularName: 'profile';
     pluralName: 'profiles';
     displayName: 'profile';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     surname: Schema.Attribute.String & Schema.Attribute.Required;
+    id_no: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    email: Schema.Attribute.Email;
+    othernames: Schema.Attribute.String & Schema.Attribute.Required;
+    telephone: Schema.Attribute.BigInteger & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
