@@ -1,7 +1,11 @@
 import React from 'react';
 
 const TimeTable = () => {
-  return <div>TimeTable</div>;
+  return (
+    <div>
+      <h2>TimeTable</h2>
+    </div>
+  );
 };
 
 export default TimeTable;
