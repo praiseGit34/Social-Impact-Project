@@ -17,7 +17,7 @@ const Registration = () => {
         const res = await axios.post(url, user);
         if (res && user.position === 'student') {
           setUser(initialUser);
-          navigate('/student-dashboard');
+          navigate('/layout');
         } else {
           navigate('/teacher-dashboard');
         }
