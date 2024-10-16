@@ -1,5 +1,11 @@
 {
   "devDependencies": {
     "tailwindcss": "^3.4.13"
+<<<<<<< HEAD
+=======
+  },
+  "dependencies": {
+    "classnames": "^2.5.1"
+>>>>>>> 269b99bfc37c94399307c9d487d7effd11817876
   }
 }
