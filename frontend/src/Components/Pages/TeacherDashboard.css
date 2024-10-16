@@ -36,18 +36,18 @@ li {
   margin: 15px 0;
 }
 
-a {
+/* a {
   text-decoration: none;
   color: #ffffff;
   transition: color 0.3s, background-color 0.3s;
   padding: 10px 15px;
   border-radius: 4px;
   display: block;
-}
+} */
 
-a:hover {
+/* a:hover {
   background-color: #495057;
-}
+} */
 
 a.active {
   font-weight: bold;

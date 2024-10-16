@@ -31,7 +31,7 @@ const SideBar = () => {
           <span className="text-xl">
             <HiOutlineLogout />
           </span>
-          Logout
+          <Link to={'/'}>Logout</Link>
         </div>
       </div>
     </div>
