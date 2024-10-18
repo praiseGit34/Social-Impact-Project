@@ -1,102 +1,139 @@
-import React, { useState } from 'react';
-import './Assignments.css'; 
+import React, { useEffect, useState } from "react";
+import { collection, getDocs, addDoc, Timestamp } from "firebase/firestore";
+import { db } from "../../firebase"; 
 
 function Assignments() {
-  const [question, setQuestion] = useState('');
-  const [options, setOptions] = useState({ A: '', B: '', C: '', D: '' });
-  const [questionsList, setQuestionsList] = useState([]);
-  const [editIndex, setEditIndex] = useState(null);
+  const [assignments, setAssignments] = useState([]);
+  const [newAssignment, setNewAssignment] = useState({
+    title: "",
+    description: "",
+    dueDate: "",
+    status: "Not Started", 
+  });
 
-  const handleOptionChange = (event) => {
-    const { name, value } = event.target;
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      [name]: value,
-    }));
+  // Fetch assignments from Firestore
+  useEffect(() => {
+    const fetchAssignments = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "assignments"));
+        const assignmentList = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        setAssignments(assignmentList);
+      } catch (error) {
+        console.error("Error fetching assignments: ", error);
+      }
+    };
+
+    fetchAssignments();
+  }, []);
+
+  // Handle form input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewAssignment({ ...newAssignment, [name]: value });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const newQuestion = { question, options };
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const assignmentWithTimestamp = {
+        ...newAssignment,
+        dueDate: Timestamp.fromDate(new Date(newAssignment.dueDate)), 
+      };
 
-    if (editIndex !== null) {
-      const updatedList = questionsList.map((item, index) => 
-        index === editIndex ? newQuestion : item
-      );
-      setQuestionsList(updatedList);
-      setEditIndex(null); 
-    } else {
-      setQuestionsList((prevList) => [...prevList, newQuestion]);
-    }
-
-    setQuestion('');
-    setOptions({ A: '', B: '', C: '', D: '' });
-  };
-
-  const handleEdit = (index) => {
-    const questionToEdit = questionsList[index];
-    setQuestion(questionToEdit.question);
-    setOptions(questionToEdit.options);
-    setEditIndex(index);
-  };
-
-  const handleDelete = (index) => {
-    if (window.confirm("Are you sure you want to delete this question?")) {
-      setQuestionsList((prevList) => prevList.filter((_, i) => i !== index));
+      await addDoc(collection(db, "assignments"), assignmentWithTimestamp);
+      setNewAssignment({ title: "", description: "", dueDate: "", status: "Not Started" });
+      alert("Assignment uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading assignment: ", error);
     }
   };
 
   return (
-    <div className="assignments-container">
-      <h1>Assignments</h1>
-      <form className="assignment-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Question:</label>
-          <input 
-            type="text" 
-            value={question} 
-            onChange={(e) => setQuestion(e.target.value)} 
-            required 
+    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px", backgroundColor: "#fff", borderRadius: "8px", boxShadow: "0 2px 10px rgba(0,0,0,0.1)" }}>
+      <h1 style={{ fontSize: "24px", fontWeight: "bold", textAlign: "center", marginBottom: "20px", color: "#333" }}>Assignments</h1>
+
+      {/* Form to upload new assignment */}
+      <form onSubmit={handleSubmit} style={{ marginBottom: "30px" }}>
+        <div style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", marginBottom: "5px", color: "#555" }}>Title</label>
+          <input
+            type="text"
+            name="title"
+            value={newAssignment.title}
+            onChange={handleChange}
+            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", color: "#000" }} 
+            required
           />
         </div>
-        <div className="options-container">
-          {['A', 'B', 'C', 'D'].map((option) => (
-            <div className="form-group" key={option}>
-              <label>Option {option}:</label>
-              <input 
-                type="text" 
-                name={option} 
-                value={options[option]} 
-                onChange={handleOptionChange} 
-                required 
-              />
-            </div>
-          ))}
+        <div style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", marginBottom: "5px", color: "#555" }}>Description</label>
+          <input
+            type="text"
+            name="description"
+            value={newAssignment.description}
+            onChange={handleChange}
+            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", color: "#000" }} 
+            required
+          />
         </div>
-        <button type="submit" className="submit-button">
-          {editIndex !== null ? 'Update Question' : 'Add Question'}
+        <div style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", marginBottom: "5px", color: "#555" }}>Due Date</label>
+          <input
+            type="date"
+            name="dueDate"
+            value={newAssignment.dueDate}
+            onChange={handleChange}
+            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", color: "#000" }} 
+            required
+          />
+        </div>
+        <div style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", marginBottom: "5px", color: "#555" }}>Status</label>
+          <input
+            type="text"
+            name="status"
+            value={newAssignment.status}
+            onChange={handleChange}
+            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", color: "#000" }} 
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          style={{ backgroundColor: "#007bff", color: "#fff", padding: "10px 20px", borderRadius: "4px", cursor: "pointer", border: "none" }}
+        >
+          Upload Assignment
         </button>
-        <button type="button" onClick={() => {
-          setQuestion('');
-          setOptions({ A: '', B: '', C: '', D: '' });
-          setEditIndex(null);
-        }} className="submit-button">Clear</button>
       </form>
 
-      <h2>Questions List</h2>
-      <div className="questions-list">
-        {questionsList.map((item, index) => (
-          <div key={item.question} className="question-item">
-            <strong>Question {index + 1}: {item.question}</strong><br />
-            A) {item.options.A}<br />
-            B) {item.options.B}<br />
-            C) {item.options.C}<br />
-            D) {item.options.D}<br />
-            <button onClick={() => handleEdit(index)} className="edit-button">Edit</button>
-            <button onClick={() => handleDelete(index)} className="edit-button">Delete</button>
-          </div>
-        ))}
-      </div>
+      {}
+      <table style={{ minWidth: "100%", borderCollapse: "collapse", border: "1px solid #ccc" }}>
+        <thead style={{ backgroundColor: "#333", color: "#fff" }}>
+          <tr>
+            <th style={{ border: "1px solid #ccc", padding: "10px", color: "#fff" }}>Title</th>
+            <th style={{ border: "1px solid #ccc", padding: "10px", color: "#fff" }}>Description</th>
+            <th style={{ border: "1px solid #ccc", padding: "10px", color: "#fff" }}>Due Date</th>
+            <th style={{ border: "1px solid #ccc", padding: "10px", color: "#fff" }}>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {assignments.length === 0 ? (
+            <tr>
+              <td colSpan="4" style={{ textAlign: "center", padding: "10px", color: "#555" }}>No assignments available.</td>
+            </tr>
+          ) : (
+            assignments.map((assignment) => (
+              <tr key={assignment.id} style={{ backgroundColor: "#f9f9f9", border: "1px solid #ccc" }}>
+                <td style={{ border: "1px solid #ccc", padding: "10px", color: "#000" }}>{assignment.title}</td> {/* Text color set to black */}
+                <td style={{ border: "1px solid #ccc", padding: "10px", color: "#000" }}>{assignment.description}</td> {/* Text color set to black */}
+                <td style={{ border: "1px solid #ccc", padding: "10px", color: "#000" }}>{new Date(assignment.dueDate.seconds * 1000).toLocaleDateString()}</td> {/* Convert Firestore Timestamp to readable date */}
+                <td style={{ border: "1px solid #ccc", padding: "10px", color: "#000" }}>{assignment.status}</td> {/* Text color set to black */}
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
     </div>
   );
 }
