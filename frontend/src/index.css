@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,16 +10,30 @@
   box-sizing: border-box;
 }
 body {
-  background: #0a192f;
-  color: #ddd;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #f1ecec;
 }
-
 /* Nav */
 .custom-nav .collapse {
   justify-content: flex-end;
 }
 /* End of Nav */
 
+.background {
+  position: relative;
+  width: 900px;
+  right: -410px;
+  top: 50px;
+  background-image: url('./assets/home-banner-background.png'); /* Adjust the path if necessary */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  /* Full viewport height */
+}
+.banner {
+  width: 550px;
+}
 /* Login */
 .login {
   min-height: 100vh;
@@ -28,7 +44,6 @@ body {
   background-color: floralwhite;
   padding: 30px;
   color: #230039;
-  border-radius: 5px;
 }
 
 .login h6 {
@@ -38,32 +53,11 @@ body {
 
 /* Sign Up */
 
-.register {
-  min-height: 100vh;
-  align-items: center;
-}
-
-.signup-form {
-  background-color: floralwhite;
-  padding: 30px;
-  color: #230039;
-  border-radius: 5px;
-}
-
-.register h6 {
-  margin-top: 16px;
-}
-.required-field::after {
-  content: ' *';
-  color: red;
-}
-
 select {
   display: block;
   width: 200px;
-  margin-bottom: 40px;
   border: 1px solid rgb(228, 223, 223);
-  border-radius: 5px;
+
   padding: 2px 3px;
 }
 .signup-login {

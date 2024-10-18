@@ -37,6 +37,10 @@ const Login = () => {
           navigate('/teacher-dashboard');
         }
       }
+
+      // here
+
+      // here
     } catch (error) {
       toast.error(error.message, {
         hideProgressBar: true,
@@ -48,6 +52,21 @@ const Login = () => {
     <Row className="login">
       <Col className="login-form" sm="12" md={{ size: 4, offset: 4 }}>
         <h2>Login:</h2>
+
+        {/* here */}
+        <FormGroup>
+          <Label>Username</Label>
+          <Input
+            type="text"
+            id="username"
+            name="username"
+            value={user.username || ''}
+            onChange={handleChange}
+            placeholder="Enter either student or teacher"
+          />
+        </FormGroup>
+
+        {/* here */}
         <FormGroup>
           <Label>Email</Label>
           <Input
