@@ -40,7 +40,7 @@ const Registration = () => {
   return (
     <Row>
       <Col sm="12" md={{ size: 4, offset: 4 }}>
-        <div className=" flex  flex-col m-auto mt-10 rounded gap-4 bg-neutral-200 text-black w-80 items-center">
+        <div className=" flex  flex-col m-auto mt-10 rounded gap-4 bg-blue-400 text-black w-80 items-center">
           <h2 className="mt-5 text-2xl border-gray-600 border-b-2 py-2">
             Sign Up
           </h2>
@@ -115,7 +115,7 @@ const Registration = () => {
             <Link to="/login" className="signup-login">
               Here{' '}
             </Link>
-            to login
+            &nbsp;to login
           </h6>
         </div>
       </Col>
