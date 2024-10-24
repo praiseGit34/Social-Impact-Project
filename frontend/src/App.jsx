@@ -9,12 +9,12 @@ import StudentDashboard from './Components/Pages/StudentDashboard';
 import Courses from './Components/Pages/Courses';
 import Assignments from './Components/Pages/Assignments';
 import Profile from './Components/Pages/Profile';
-import Layout from './Components/Pages/shared/Layout';
 import StudentAssignments from './StudentAssignments';
 import TimeTable from './Components/TimeTable';
 import Calendar from './Components/Calendar';
 import Examinations from './Components/Examinations';
 import Results from './Components/Results';
+import Layout from './Components/Pages/shared/Layout';
 
 function App() {
   return (
@@ -34,7 +34,6 @@ function App() {
           />
 
           <Route path="/teacher-dashboard/profile" element={<Profile />} />
-          {/* <Route path="*" element={<div>Page Not Found</div>} /> */}
         </Routes>
         <Routes>
           <Route path="/layout" element={<Layout />}>
