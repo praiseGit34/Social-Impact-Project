@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Profile.css'; 
 
 const Profile = () => {
   const [profile, setProfile] = useState({
@@ -8,9 +7,6 @@ const Profile = () => {
     surname: '',
     otherNames: '',
     telephone: '',
-    sex: '',
-    dateOfBirth: '',
-    nationality: '',
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -25,40 +21,67 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-container">
-      <h1>My Profile</h1>
-      <button className="edit-button" onClick={handleEditClick}>
+    <div className="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-lg border border-gray-200">
+      <h1 className="text-3xl font-semibold text-gray-800 mb-6">My Profile</h1>
+      <button
+        className="bg-blue-600 text-white py-2 px-6 rounded-md shadow hover:bg-blue-700 transition duration-200"
+        onClick={handleEditClick}
+      >
         {isEditing ? 'Cancel' : 'Edit Details'}
       </button>
 
       {isEditing ? (
-        <form className="profile-form">
-          {Object.keys(profile).map((key) => (
-            <div className="form-group" key={key}>
-              <label>{key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}:</label>
-              {key === 'sex' ? (
-                <select name={key} value={profile[key]} onChange={handleChange}>
-                  <option value="">Select</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-              ) : (
-                <input type={key === 'dateOfBirth' ? 'date' : 'text'} name={key} value={profile[key]} onChange={handleChange} />
-              )}
-            </div>
-          ))}
+        <form className="mt-6">
+          <table className="w-full">
+            <tbody>
+              {['idNo', 'email', 'surname', 'otherNames', 'telephone'].map((key) => (
+                <tr key={key} className="border-b">
+                  <td className="py-4 px-2 text-left">
+                    <label className="block text-sm font-medium text-gray-700">
+                      {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}:
+                    </label>
+                  </td>
+                  <td className="py-4 px-2">
+                    <input
+                      type="text"
+                      name={key}
+                      value={profile[key]}
+                      onChange={handleChange}
+                      className="block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
+                    />
+                  </td>
+                </tr>
+              ))}
+              <tr>
+                <td colSpan="2" className="py-4 text-right">
+                  <button
+                    type="submit"
+                    className="bg-green-600 text-white py-2 px-4 rounded-md shadow hover:bg-green-700 transition duration-200"
+                  >
+                    Save Profile
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </form>
       ) : (
-        <div className="profile-details">
-          <h2>Profile Details</h2>
-          <ul>
-            {Object.keys(profile).map((key) => (
-              <li key={key}>
-                <strong>{key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}:</strong> {profile[key] || 'N/A'}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-6">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">Profile Details</h2>
+          <table className="w-full">
+            <tbody>
+              {['idNo', 'email', 'surname', 'otherNames', 'telephone'].map((key) => (
+                <tr key={key} className="border-b">
+                  <td className="py-2 px-4 font-medium text-gray-700">
+                    {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}:
+                  </td>
+                  <td className="py-2 px-4 text-gray-600">
+                    {profile[key] || 'N/A'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>

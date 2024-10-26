@@ -1,15 +1,12 @@
+// src/Components/SideBar.js
 import classNames from 'classnames';
 import React from 'react';
 import { FcBullish } from 'react-icons/fc';
-import {
-  DASHBOARD_SIDEBAR_BOTTOM_LINKS,
-  DASHBOARD_SIDEBAR_LINKS,
-} from '../../lib/constants/Navigation';
+import { DASHBOARD_SIDEBAR_BOTTOM_LINKS, DASHBOARD_SIDEBAR_LINKS } from '../../lib/constants/Navigation';
 import { Link, useLocation } from 'react-router-dom';
 import { HiOutlineLogout } from 'react-icons/hi';
 
-const linkClass =
-  'flex items-center gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base';
+const linkClass = 'flex items-center gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base';
 
 const SideBar = () => {
   return (
@@ -23,10 +20,7 @@ const SideBar = () => {
           <SideBarLink key={item.key} item={item} />
         ))}
       </div>
-      <div className="flex flex-col gap-0.5 p-2 border-t border-neutral-700 ">
-        {DASHBOARD_SIDEBAR_BOTTOM_LINKS.map(item => (
-          <SideBarLink key={item.key} item={item} />
-        ))}
+      <div className="flex flex-col gap-0.5 p-2 border-t border-neutral-700">
         <div className={classNames('text-red-700 cursor-pointer', linkClass)}>
           <span className="text-xl">
             <HiOutlineLogout />
@@ -46,9 +40,7 @@ const SideBarLink = ({ item }) => {
     <Link
       to={item.path}
       className={classNames(
-        pathname === item.path
-          ? 'bg-neutral-700 text-white'
-          : 'text-neutral-400',
+        pathname === item.path ? 'bg-neutral-700 text-white' : 'text-neutral-400',
         linkClass
       )}
     >

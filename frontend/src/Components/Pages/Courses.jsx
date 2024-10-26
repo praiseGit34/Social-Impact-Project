@@ -1,57 +1,47 @@
-import React, { useState } from 'react';
-import './Courses.css'; 
+import React from 'react';
 
 function Courses() {
-  const [file, setFile] = useState(null);
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
-
-  const handleUpload = (event) => {
-    event.preventDefault();
-    console.log('File to upload:', file);
-    
-  };
-
   const coursesData = [
     {
       title: 'Mathematics',
-      description: 'Mathematics is the study of numbers, shapes, and patterns.',
+      description: 'Explore the fundamentals of numbers, shapes, and patterns.',
+      link: 'https://www.khanacademy.org/math',
     },
     {
       title: 'Science',
-      description: 'Science is the systematic study of the physical and natural world.',
+      description: 'Dive into the systematic study of the physical and natural world.',
+      link: 'https://www.nationalgeographic.org/education/',
     },
     {
       title: 'English',
-      description: 'English is a global language that plays a key role in communication.',
+      description: 'Enhance your communication skills in this global language.',
+      link: 'https://learnenglish.britishcouncil.org/',
     },
     {
       title: 'Social Studies',
-      description: 'Social Studies involves the study of societies and their relationships.',
+      description: 'Understand societies and their relationships through various perspectives.',
+      link: 'https://www.pbslearningmedia.org/subjects/social-studies/',
     },
   ];
 
   return (
-    <div className="courses-container">
-      <h1>Courses</h1>
-      <div className="course-grid">
+    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+      <h1 className="text-center text-3xl font-bold text-gray-800 mb-6">Courses You Can Teach</h1>
+      <ul className="space-y-4">
         {coursesData.map((course, index) => (
-          <div key={index} className="course">
-            <h2>{course.title}</h2>
-            <p>{course.description}</p>
-            <form onSubmit={handleUpload} className="upload-form">
-              <input 
-                type="file" 
-                accept=".pdf, video/*" 
-                onChange={handleFileChange} 
-              />
-              <button type="submit">Upload Notes</button>
-            </form>
-          </div>
+          <li key={index}>
+            <a
+              href={course.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-4 bg-gray-100 rounded-lg shadow-md border border-gray-300 transition-transform transform hover:scale-105 hover:shadow-xl"
+            >
+              <h2 className="text-xl font-semibold text-gray-800">{course.title}</h2>
+              <p className="text-gray-700">{course.description}</p>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
