@@ -6,7 +6,7 @@ import Registration from './Components/Registration/Register';
 import Logout from './Components/Logout/Logout';
 import TeacherDashboard from './Components/Pages/TeacherDashboard';
 import StudentDashboard from './Components/Pages/StudentDashboard';
-import Layout from './Components/Pages/shared/Layout';
+import Layout from './Components/Pages/Shared/Layout';
 import Courses from './Components/Pages/Courses';
 import Assignments from './Components/Pages/Assignments';
 import Profile from './Components/Pages/Profile';
@@ -15,7 +15,6 @@ import TimeTable from './Components/TimeTable';
 import Calendar from './Components/Calendar';
 import Examinations from './Components/Examinations';
 import Results from './Components/Results';
-import Layout from './Components/Pages/shared/Layout';
 
 function App() {
   return (
@@ -38,7 +37,10 @@ function App() {
         <Routes>
           <Route path="/layout" element={<Layout />}>
             <Route index element={<StudentDashboard />} />
-            <Route path="student-assignments" element={<StudentAssignments />} />
+            <Route
+              path="student-assignments"
+              element={<StudentAssignments />}
+            />
             <Route path="time-table" element={<TimeTable />} />
             <Route path="calendar" element={<Calendar />} />
             <Route path="exams" element={<Examinations />} />
