@@ -25,13 +25,15 @@ const events = {
 
 const Calendar = () => {
   const [selectedDay, setSelectedDay] = useState(null);
-  
+
   const daysInMonth = getDaysInMonth(month, year);
   const firstDay = getFirstDayOfMonth(month, year);
-  
+
   const days = [];
   for (let i = 0; i < firstDay; i++) {
-    days.push(<div key={`empty-${i}`} className="border border-gray-300 p-4"></div>);
+    days.push(
+      <div key={`empty-${i}`} className="border border-gray-300 p-4"></div>
+    );
   }
 
   for (let day = 1; day <= daysInMonth; day++) {
@@ -54,13 +56,17 @@ const Calendar = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gray-50 rounded-lg shadow-md">
+    <div className="max-w-4xl mx-auto p-6 bg-blue-50 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
-        Calendar - {currentMonth.toLocaleString('default', { month: 'long' })} {year}
+        Calendar - {currentMonth.toLocaleString('default', { month: 'long' })}{' '}
+        {year}
       </h1>
       <div className="grid grid-cols-7 gap-1">
-        {daysOfWeek.map((day) => (
-          <div key={day} className="font-bold text-center border border-gray-300 p-2 bg-gray-200 text-gray-800">
+        {daysOfWeek.map(day => (
+          <div
+            key={day}
+            className="font-bold text-center border border-gray-300 p-2 bg-blue-200 text-gray-800"
+          >
             {day}
           </div>
         ))}
@@ -68,11 +74,15 @@ const Calendar = () => {
       </div>
       {selectedDay && (
         <div className="mt-4 text-center bg-gray-100 p-4 rounded-lg shadow-inner">
-          <h2 className="text-xl font-semibold text-gray-800">Events on {selectedDay}</h2>
+          <h2 className="text-xl font-semibold text-gray-800">
+            Events on {selectedDay}
+          </h2>
           {events[selectedDay] ? (
             <ul className="list-disc list-inside">
               {events[selectedDay].map((event, index) => (
-                <li key={index} className="text-gray-700">{event}</li>
+                <li key={index} className="text-gray-700">
+                  {event}
+                </li>
               ))}
             </ul>
           ) : (

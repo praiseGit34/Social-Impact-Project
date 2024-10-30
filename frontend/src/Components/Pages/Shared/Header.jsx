@@ -16,7 +16,7 @@ const Header = () => {
         <HiOutlineBell fontSize={24} />
       </div>
       <div
-        className="h-10 w-10 text-white rounded-full bg-black bg-cover bg-no-repeat bg-center mr-0"
+        className="h-10 w-10 text-white rounded-full bg-blue-700 bg-cover bg-no-repeat bg-center mr-8"
         style={{
           backgroundImage: 'url("https://source.unsplash.com/80x80?face")',
         }}

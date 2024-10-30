@@ -4,7 +4,6 @@ import {
   HiOutlineClipboardList,
   HiClock,
   HiOutlineCalendar,
-  HiFilter,
 } from 'react-icons/hi';
 
 export const DASHBOARD_SIDEBAR_LINKS = [
@@ -32,7 +31,6 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     path: '/layout/calendar',
     icon: <HiOutlineCalendar />,
   },
-
 ];
 
 export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [];
