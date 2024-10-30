@@ -47,6 +47,15 @@ function App() {
             <Route path="results" element={<Results />} />
           </Route>
         </Routes>
+
+        <Routes>
+          <Route path="/teacher-dashboard" element={<TeacherDashboard />}>
+            <Route index element={<StudentDashboard />} /> //change this
+            <Route path="profile" element={<Profile />} />
+            <Route path="courses" element={<Courses />} />
+            <Route path="assignments" element={<Assignments />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </Container>
   );
