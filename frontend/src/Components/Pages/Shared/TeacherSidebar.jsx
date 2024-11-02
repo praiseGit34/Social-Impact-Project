@@ -4,23 +4,23 @@ import React from 'react';
 import { FcBullish } from 'react-icons/fc';
 import {
   DASHBOARD_SIDEBAR_BOTTOM_LINKS,
-  DASHBOARD_SIDEBAR_LINKS,
-} from '../../lib/constants/Navigation';
+  TEACHER_DASHBOARD_SIDEBAR_LINKS,
+} from '../../lib/constants/TeacherNavigation';
 import { Link, useLocation } from 'react-router-dom';
 import { HiOutlineLogout } from 'react-icons/hi';
 
 const linkClass =
   'flex items-center gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base';
 
-const SideBar = () => {
+const TeacherSideBar = () => {
   return (
-    <div className="bg-blue-300 w-60 p-3 flex flex-col h-screen">
+    <div className="bg-blue-300 w-60 p-3 flex flex-col h-screen absolute top-0">
       <div className="flex gap-2 items-center py-1 px-4 mb-10">
         <FcBullish fontSize={24} />
         <span className="text-black text-lg">Edulink</span>
       </div>
       <div className="flex-1 text-white">
-        {DASHBOARD_SIDEBAR_LINKS.map(item => (
+        {TEACHER_DASHBOARD_SIDEBAR_LINKS.map(item => (
           <SideBarLink key={item.key} item={item} />
         ))}
       </div>
@@ -36,7 +36,7 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default TeacherSideBar;
 
 const SideBarLink = ({ item }) => {
   const { pathname } = useLocation();

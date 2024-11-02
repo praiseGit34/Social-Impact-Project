@@ -1,69 +1,44 @@
-import CustomNav from '../CustomNav';
-import { Link } from 'react-router-dom';
-import { userData } from '../../../helpers';
-import './index.css';
+import NavBar from './NavBar';
+import BannerImage from '../../assets/home-banner-image.png';
+import { FaPhoneVolume } from 'react-icons/fa6';
+import About from '../About';
+import Footer from '../Footer';
 
 const Home = () => {
-  const { username } = userData();
   return (
     <div>
-      <CustomNav />
-
-      <div className=" text-center pt-4 home">
+      <dir>
+        <NavBar />
+      </dir>
+      <div>
+        <div className="background"></div>
         <div>
-          <div className="mainDiv">
-            <img
-              src="https://img.freepik.com/free-photo/schoolchildren-reading-library_1098-4048.jpg"
-              alt="image info"
-            />
-            <h3 className="text-red-700">
-              Get the best education services now
-            </h3>
-          </div>
-          <Link to={'/teacher-dashboard/courses'}>See All Our Courses</Link>
+          <img
+            src={BannerImage}
+            alt=""
+            className="absolute rounded top-24 right-20 h-auto banner"
+          />
         </div>
-        <div className="whoWeAre">
-          <div className="main">
-            <h3>Who we are</h3>
-            <div>
-              <p>
-                We offer a<br /> community <br /> based reliable and <br />{' '}
-                efficient learning
-                <br /> at your convinience
-              </p>
-            </div>
-          </div>
+        <div className="col absolute max-w-96 top-40 left-32 ">
+          <h1 className="text-5xl font-bold leading-tight text-left mb-5">
+            Investing in Knowledge and
+            <span className="text-purple-800">&nbsp;Your Future</span>
+          </h1>
+          <p className="text-xl">
+            Our Eduline Online E-Learning Platform has been developed to be a
+            viehicle for delivering holiday learning solutions for learners
+          </p>
+          <button className="flex gap-2 items-center bg-teal-900 py-1 px-3 text-neutral-50 font-bold ml-20 mt-10 h-10 w-60 pl-12 text-xl">
+            <FaPhoneVolume fontSize={24} /> Contact Us
+          </button>
         </div>
       </div>
-      <footer>
-        <div>
-          <h3>Services</h3>
-          <span>Check Us</span>
-          <p>Online Teaching</p>
-          <p>Reading Materials</p>
-        </div>
-        <div>
-          <h3>Address</h3>
-          <span>Contact Us</span>
-          <p>Kampala</p>
-          <p>+256787****</p>
-        </div>
-        <div>
-          <h3>We are Social</h3>
-          <span>Follow Us</span>
-          <div className="text-center">
-            <span>
-              <box-icon type="logo" name="facebook-circle"></box-icon>
-            </span>
-            <span>
-              <box-icon name="twitter" type="logo"></box-icon>
-            </span>
-            <span>
-              <box-icon name="linkedin" type="logo"></box-icon>
-            </span>
-          </div>
-        </div>
-      </footer>
+      <div>
+        <About />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -678,7 +678,7 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
   info: {
     singularName: 'review';
     pluralName: 'reviews';
-    displayName: 'review';
+    displayName: 'Review';
   };
   options: {
     draftAndPublish: true;
@@ -688,6 +688,7 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     rating: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
       Schema.Attribute.Unique &
       Schema.Attribute.SetMinMax<
         {

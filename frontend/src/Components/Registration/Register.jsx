@@ -17,7 +17,7 @@ const Registration = () => {
         const res = await axios.post(url, user);
         if (res && user.position === 'student') {
           setUser(initialUser);
-          navigate('/student-dashboard');
+          navigate('/layout');
         } else {
           navigate('/teacher-dashboard');
         }
@@ -38,10 +38,12 @@ const Registration = () => {
     }));
   };
   return (
-    <Row className="register">
+    <Row>
       <Col sm="12" md={{ size: 4, offset: 4 }}>
-        <div className="signup-form">
-          <h2>Sign Up</h2>
+        <div className=" flex  flex-col m-auto mt-10 rounded gap-4 bg-blue-400 text-black w-80 items-center">
+          <h2 className="mt-5 text-2xl border-gray-600 border-b-2 py-2">
+            Sign Up
+          </h2>
           <FormGroup>
             <Label for="username">User Name</Label>
             <Input
@@ -52,6 +54,7 @@ const Registration = () => {
               onChange={handleUserChange}
               placeholder="Enter your full name"
               required
+              className="block px-3 py-1 rounded mt-1"
             />
           </FormGroup>
 
@@ -65,6 +68,7 @@ const Registration = () => {
               onChange={handleUserChange}
               placeholder="Enter Email"
               required
+              className="block px-3 py-1 rounded mt-1"
             />
           </FormGroup>
 
@@ -78,6 +82,7 @@ const Registration = () => {
               onChange={handleUserChange}
               placeholder="Enter Password"
               required
+              className="block px-3 py-1 rounded mt-1"
             />
           </FormGroup>
 
@@ -85,7 +90,11 @@ const Registration = () => {
 
           <FormGroup>
             <Label>Role</Label>
-            <select name="position" onChange={handleUserChange}>
+            <select
+              name="position"
+              onChange={handleUserChange}
+              className="py-1 px-2 text-neutral-500 w-52"
+            >
               <option value="">Choose Role</option>
               <option value="student">Student</option>
               <option value="teacher">Teacher</option>
@@ -94,15 +103,19 @@ const Registration = () => {
 
           {/* here ends */}
 
-          <Button color="primary" onClick={signUp}>
+          <Button
+            color="primary"
+            onClick={signUp}
+            className="bg-blue-900 text-white w-20 py-1"
+          >
             Sign Up
           </Button>
-          <h6>
-            Already have an account? Click{' '}
+          <h6 className="flex flex-wrap w-60 mb-5">
+            Already have an account? Click
             <Link to="/login" className="signup-login">
-              Here
-            </Link>{' '}
-            to login
+              Here{' '}
+            </Link>
+            &nbsp;to login
           </h6>
         </div>
       </Col>

@@ -40,6 +40,6 @@ The React Edulink Project is open-source software licensed under the MIT license
 ---
 This project was inspired by the need for an efficient and user-friendly online learning tool for teachers and educational institutions.
 
-I express my sincere gratitude to all team members and collaborators, Teaching Assistants in this project, the Kanzu code Foundation,  the npm package makers whose contributions have been invaluable in the development of this application. Their dedication and hard work in creating and maintaining these packages have significantly enhanced the functionality and efficiency of the app.
+I express my sincere gratitude to all team members and collaborators @DavidMakwetta, @mugishaivanj, @AsiimirePraise and @BrianYiga, all the Teaching Assistants in this project, the Kanzu code Foundation,  the npm package makers whose contributions have been invaluable in the development of this application. Their dedication and hard work in creating and maintaining these packages have significantly enhanced the functionality and efficiency of the app.
 
 I extend my appreciation to the entire open-source community for their continuous efforts in building and sharing high-quality software. The collaboration and support within the community have been instrumental in the success of this project.

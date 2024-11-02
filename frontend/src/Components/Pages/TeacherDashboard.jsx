@@ -1,55 +1,25 @@
-import { NavLink, Routes, Route } from 'react-router-dom';
-import { Container, Row, Col } from 'reactstrap';
-import Assignments from './Assignments';
-import Courses from './Courses';
-import Dashboard from './Dashboard';
-import './TeacherDashboard.css';
-import Profile from './Profile';
+import { Outlet } from 'react-router-dom';
+import TeacherSideBar from './Shared/TeacherSidebar';
+import Header from './Shared/Header';
 
-const TeacherDashboard = () => {
+const Layout = () => {
   return (
-    <Container>
-      <Row>
-        <Col xs="3" className="sidebar">
-          <h2>Teacher Dashboard</h2>
-          <ul>
-            <li>
-              <NavLink to="/teacher-dashboard">Dashboard</NavLink>
-            </li>
-            <li>
-              <NavLink to="/teacher-dashboard/profile">Profile</NavLink>
-            </li>
-            <li>
-              <NavLink to="/teacher-dashboard/courses">Courses</NavLink>
-            </li>
-            <li>
-              <NavLink to="/teacher-dashboard/assignments">Assignments</NavLink>
-            </li>
-            <li>
-              <NavLink to="/Logout">Logout</NavLink>
-            </li>
-          </ul>
-        </Col>
-        <Col xs="9" className="content">
-          <Routes>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="courses" element={<Courses />} />
-            <Route path="assignments" element={<Assignments />} />
-            <Route path="profile" element={<Profile />} />
-          </Routes>
-          <h3>Welcome to the Teacher Dashboard</h3>
-          <p>
-            Here you can manage your classes, track student progress, and create
-            assignments.
-          </p>
-          <p>
-            Explore the sidebar to navigate between your profile, courses, and
-            assignments.
-          </p>
-          <p>Stay organized and help your students succeed!</p>
-        </Col>
-      </Row>
-    </Container>
+    <div className="flex flex-row bg-neutral-100 h-screen w-full overflow-hidden">
+      <div>
+        <div>
+          <TeacherSideBar />
+        </div>
+        <div className="bg-neutral-200 h-screen w-5/6 absolute top-0 left-60">
+          <div>
+            <h1>
+              <Header />
+            </h1>
+          </div>
+          <div>{<Outlet />}</div>
+        </div>
+      </div>
+    </div>
   );
 };
-export default TeacherDashboard;
+
+export default Layout;

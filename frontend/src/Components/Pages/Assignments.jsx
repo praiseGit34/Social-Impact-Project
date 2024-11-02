@@ -1,101 +1,159 @@
-import React, { useState } from 'react';
-import './Assignments.css'; 
+import React, { useEffect, useState } from 'react';
+import { collection, getDocs, addDoc, Timestamp } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 function Assignments() {
-  const [question, setQuestion] = useState('');
-  const [options, setOptions] = useState({ A: '', B: '', C: '', D: '' });
-  const [questionsList, setQuestionsList] = useState([]);
-  const [editIndex, setEditIndex] = useState(null);
+  const [assignments, setAssignments] = useState([]);
+  const [newAssignment, setNewAssignment] = useState({
+    title: '',
+    description: '',
+    dueDate: '',
+    status: 'Not Started',
+  });
 
-  const handleOptionChange = (event) => {
-    const { name, value } = event.target;
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      [name]: value,
-    }));
+  // Fetch assignments from Firestore
+  useEffect(() => {
+    const fetchAssignments = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'assignments'));
+        const assignmentList = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setAssignments(assignmentList);
+      } catch (error) {
+        console.error('Error fetching assignments: ', error);
+      }
+    };
+
+    fetchAssignments();
+  }, []);
+
+  // Handle form input changes
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setNewAssignment({ ...newAssignment, [name]: value });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const newQuestion = { question, options };
+  // Handle form submission
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const assignmentWithTimestamp = {
+        ...newAssignment,
+        dueDate: Timestamp.fromDate(new Date(newAssignment.dueDate)),
+      };
 
-    if (editIndex !== null) {
-      const updatedList = questionsList.map((item, index) => 
-        index === editIndex ? newQuestion : item
-      );
-      setQuestionsList(updatedList);
-      setEditIndex(null); 
-    } else {
-      setQuestionsList((prevList) => [...prevList, newQuestion]);
-    }
-
-    setQuestion('');
-    setOptions({ A: '', B: '', C: '', D: '' });
-  };
-
-  const handleEdit = (index) => {
-    const questionToEdit = questionsList[index];
-    setQuestion(questionToEdit.question);
-    setOptions(questionToEdit.options);
-    setEditIndex(index);
-  };
-
-  const handleDelete = (index) => {
-    if (window.confirm("Are you sure you want to delete this question?")) {
-      setQuestionsList((prevList) => prevList.filter((_, i) => i !== index));
+      await addDoc(collection(db, 'assignments'), assignmentWithTimestamp);
+      setNewAssignment({
+        title: '',
+        description: '',
+        dueDate: '',
+        status: 'Not Started',
+      });
+      alert('Assignment uploaded successfully!');
+    } catch (error) {
+      console.error('Error uploading assignment: ', error);
     }
   };
 
   return (
-    <div className="assignments-container">
-      <h1>Assignments</h1>
-      <form className="assignment-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Question:</label>
-          <input 
-            type="text" 
-            value={question} 
-            onChange={(e) => setQuestion(e.target.value)} 
-            required 
-          />
-        </div>
-        <div className="options-container">
-          {['A', 'B', 'C', 'D'].map((option) => (
-            <div className="form-group" key={option}>
-              <label>Option {option}:</label>
-              <input 
-                type="text" 
-                name={option} 
-                value={options[option]} 
-                onChange={handleOptionChange} 
-                required 
-              />
-            </div>
-          ))}
-        </div>
-        <button type="submit" className="submit-button">
-          {editIndex !== null ? 'Update Question' : 'Add Question'}
-        </button>
-        <button type="button" onClick={() => {
-          setQuestion('');
-          setOptions({ A: '', B: '', C: '', D: '' });
-          setEditIndex(null);
-        }} className="submit-button">Clear</button>
-      </form>
-
-      <h2>Questions List</h2>
-      <div className="questions-list">
-        {questionsList.map((item, index) => (
-          <div key={item.question} className="question-item">
-            <strong>Question {index + 1}: {item.question}</strong><br />
-            A) {item.options.A}<br />
-            B) {item.options.B}<br />
-            C) {item.options.C}<br />
-            D) {item.options.D}<br />
-            <button onClick={() => handleEdit(index)} className="edit-button">Edit</button>
-            <button onClick={() => handleDelete(index)} className="edit-button">Delete</button>
+    <div className="flex">
+      {/* Form to upload new assignment */}
+      <div className="w-1/3 p-4">
+        <h1 className="text-2xl font-bold mb-4">Upload Assignment</h1>
+        <form onSubmit={handleSubmit} className="mb-6">
+          <div className="mb-4">
+            <label className="block mb-2">Title</label>
+            <input
+              type="text"
+              name="title"
+              value={newAssignment.title}
+              onChange={handleChange}
+              className="border border-gray-300 p-2 w-full"
+              required
+            />
           </div>
-        ))}
+          <div className="mb-4">
+            <label className="block mb-2">Description</label>
+            <input
+              type="text"
+              name="description"
+              value={newAssignment.description}
+              onChange={handleChange}
+              className="border border-gray-300 p-2 w-full"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2">Due Date</label>
+            <input
+              type="date"
+              name="dueDate"
+              value={newAssignment.dueDate}
+              onChange={handleChange}
+              className="border border-gray-300 p-2 w-full"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2">Status</label>
+            <input
+              type="text"
+              name="status"
+              value={newAssignment.status}
+              onChange={handleChange}
+              className="border border-gray-300 p-2 w-full"
+              required
+            />
+          </div>
+          <button className="bg-blue-500 text-white p-2 rounded">
+            Upload Assignment
+          </button>
+        </form>
+      </div>
+
+      {/* Table to display assignments */}
+      <div className="w-2/3 p-4">
+        <h2 className="text-2xl font-bold mb-4">Assignments</h2>
+        <table className="min-w-full border border-gray-300">
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="border border-gray-300 p-2">Title</th>
+              <th className="border border-gray-300 p-2">Description</th>
+              <th className="border border-gray-300 p-2">Due Date</th>
+              <th className="border border-gray-300 p-2">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {assignments.length === 0 ? (
+              <tr>
+                <td colSpan="4" className="text-center p-4">
+                  No assignments available.
+                </td>
+              </tr>
+            ) : (
+              assignments.map(assignment => (
+                <tr key={assignment.id} className="bg-white">
+                  <td className="border border-gray-300 p-2">
+                    {assignment.title}
+                  </td>
+                  <td className="border border-gray-300 p-2">
+                    {assignment.description}
+                  </td>
+                  <td className="border border-gray-300 p-2">
+                    {new Date(
+                      assignment.dueDate.seconds * 1000
+                    ).toLocaleDateString()}
+                  </td>
+                  <td className="border border-gray-300 p-2">
+                    {assignment.status}
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
